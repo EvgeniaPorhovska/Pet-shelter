@@ -4,10 +4,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
 
 
-.background{
+body{
     background: #FFFBEC;
     margin: 0;
-    height: 1000px;
 }
 
 header{ 
@@ -43,20 +42,37 @@ nav{
     color: #000000;
 }
 
+main{
+    padding: 7px;
+}
 .about_us{
-    width: 10000px;
-    height: 400px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
 
-    background: #ECFFEE;
+.WhoAreWe{
+    font-family: "Rubik Mono One", monospace;
+    font-style: normal;
+    font-weight:  150;
+    font-size: 30px;
+
+
+    color: #000000;
 }
 
 .information{
-    font-family: "Rubik Mono One", monospace;
-    font-style: normal;
-    font-weight:  100;
-    font-size: 10px;
-    line-height: 20px;
-    text-decoration-line: underline;
+    font-family: "Coda", system-ui;
+    font-weight: 100;
+    font-size: 25px
+}
 
-    color: #000000;
+.dog{
+    width: 500px;
+    height: 500px;
+    
+}
+
+footer{
 }
