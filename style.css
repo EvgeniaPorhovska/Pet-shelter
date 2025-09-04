@@ -75,4 +75,11 @@ main{
 }
 
 footer{
+    color: #ECFFEE;
+}
+
+.our_mission{
+    height: 500px;
+    width: 380px;
+    justify-content: space-around;
 }
