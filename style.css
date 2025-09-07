@@ -74,16 +74,33 @@ main{
     
 }
 
-.our_mission{
-    height: 500px;
-    width: 380px; 
-    border-radius: 50px;   
-    justify-content: space-between;
+footer {
+  display: grid;
+  grid-template-areas: 
+    "left ."
+    ". right";   /* сітка: ліво-верх і право-низ */
+  background: #ECFFEE;
+  padding: 20px;
 }
 
-footer{
-    
+.left_photo{
+    grid-area: left;   /* перше фото у верхньому лівому кутку */
+    align-self: start;
+    justify-self: start;
+    height: 500px;
+    width: 380px; 
+    border-radius: 50px;
 }
+
+.right_photo{
+    grid-area: right;  /* друге фото у нижньому правому кутку */
+    align-self: end;
+    justify-self: end;
+    height: 500px;
+    width: 380px; 
+    border-radius: 50px;
+}
+
 
 .volonteer{
     display: flex;
@@ -91,8 +108,25 @@ footer{
     margin-top: 20px;
     margin-bottom: 30px;
 }
+    
+.container {
+  display: flex;           /* розміщує елементи в ряд */
+  gap: 20px;               /* відстань між квадратиками */
+  justify-content: center; /* центрування */
+  padding: 40px;
+}
 
-.volonteer_text{
+.card {
+  background: white;       /* білі квадратики */
+  padding: 20px;
+  border-radius: 10px;     /* заокруглені кути */
+  width: 250px;            /* ширина картки */
+}
+
+.helptx{
     font-family: "Rubik Mono One", monospace;
-    display: flex;
+}
+
+.helptx2{
+    font-family: "Coda", system-ui;
 }
