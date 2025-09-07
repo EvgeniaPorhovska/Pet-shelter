@@ -74,11 +74,15 @@ main{
     
 }
 
-
 .our_mission{
     height: 500px;
-    width: 380px;
-    justify-content: space-around;
+    width: 380px; 
+    border-radius: 50px;   
+    justify-content: space-between;
+}
+
+footer{
+    
 }
 
 .volonteer{
@@ -91,6 +95,4 @@ main{
 .volonteer_text{
     font-family: "Rubik Mono One", monospace;
     display: flex;
-    
-
 }
