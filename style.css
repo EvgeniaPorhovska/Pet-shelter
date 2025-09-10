@@ -50,6 +50,7 @@ main{
     justify-content: space-between;
     margin-top: 20px;
     margin-bottom: 30px;
+    position: relative;
 }
 
 .WhoAreWe{
@@ -74,7 +75,7 @@ main{
     
 }
 
-footer {
+.pets_container {
   display: grid;
   grid-template-areas: 
     "left ."
@@ -129,4 +130,12 @@ footer {
 
 .helptx2{
     font-family: "Coda", system-ui;
+}
+
+.lapa1{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: 0;
+    right: 0;
 }

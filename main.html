@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>Happy Tails</title>
   </head>
@@ -10,7 +13,9 @@
     <header>
       <img class="logo" src="logo.png" alt="logo.png" />
       <nav>
-        <a class="menu_elements" href="findfriend.html">знайти друга</a>
+        <a class="menu_elements" href="findfriend.html"
+          >знайти друга</a
+        >
         <a class="menu_elements" href="main.html">Про нас</a>
         <a class="menu_elements" href="Help.html">Як допомогти</a>
         <a class="menu_elements" href="Contacts.html">Контакти</a>
@@ -24,7 +29,8 @@
             ми займаємося
           </h1>
           <h1 class="information">
-            Happy Tails — це некомерційний проєкт, спрямований на <br />
+            Happy Tails — це некомерційний проєкт, спрямований на
+            <br />
             системне вирішення проблеми безхатніх тварин <br />
             гуманними способами. Завдяки безкоштовному онлайн- <br />
             ресурсу можна знайти собі домашнього улюбленця або <br />
@@ -33,22 +39,98 @@
         </div>
         <img class="dog" src="dog.png" alt="dog.png" />
       </div>
+
+      <section class="pets_container">
+        <img
+          class="left_photo"
+          src="our_mission.jpg"
+          alt="our_mission.jpg"
+        />
+        <div>
+          <h1 class="WhoAreWe">Наша місія</h1>
+          <h1 class="information">
+            Підвищувати рівень відповідальності та<br />
+            поваги суспільства до життя тварин.
+          </h1>
+        </div>
+        <img
+          class="right_photo"
+          src="our_mission2.jpg"
+          alt="our_mission2.jpg"
+        />
+        <div>
+          <h1 class="WhoAreWe">Наша ціль</h1>
+          <h1 class="information">
+            У кожної тваринки - люблячий господар
+          </h1>
+        </div>
+      </section>
     </main>
 
-    <footer>
-      <img class="left_photo" src="our_mission.jpg" alt="our_mission.jpg" />
-      <div>
-        <h1 class="WhoAreWe">Наша місія</h1>
-        <h1 class="information">
-          Підвищувати рівень відповідальності та<br />
-          поваги суспільства до життя тварин.
-        </h1>
-      </div>
-      <img class="right_photo" src="our_mission2.jpg" alt="our_mission2.jpg" />
-      <div>
-        <h1 class="WhoAreWe">Наша ціль</h1>
-        <h1 class="information">У кожної тваринки - люблячий господар</h1>
-      </div>
-    </footer>
+    <footer></footer>
+    <script>
+      // скільки лапок генерувати
+      const PAW_COUNT = 25;
+
+      const header = document.querySelector("header");
+      const headerHeight = header ? header.offsetHeight : 0;
+
+      document.documentElement.style.position = "relative";
+      document.body.style.position = "relative";
+
+      const docHeight = Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight
+      );
+
+      const pawContainer = document.createElement("div");
+      pawContainer.style.position = "absolute";
+      pawContainer.style.inset = "0 0 0 0"; // top/right/bottom/left:0
+      pawContainer.style.height = docHeight + "px";
+      pawContainer.style.pointerEvents = "none"; 
+      pawContainer.style.zIndex = "1";
+      document.body.appendChild(pawContainer);
+
+      if (header) {
+        header.style.position = header.style.position || "relative";
+        header.style.zIndex = "10";
+      }
+
+      for (let i = 0; i < PAW_COUNT; i++) {
+        const paw = document.createElement("img");
+        paw.src = "./green_paw_transparent 3.png";
+        paw.alt = "";
+        paw.style.position = "absolute";
+
+
+        const size = 28 + Math.random() * 64; 
+        paw.style.width = size + "px";
+        paw.style.height = "auto";
+        paw.style.opacity = (0.45 + Math.random() * 0.4).toFixed(2);
+        paw.style.transform = `rotate(${Math.floor(
+          Math.random() * 360
+        )}deg)`;
+
+        const maxY = docHeight - size;
+        const x = Math.random() * (window.innerWidth - size);
+        const y =
+          headerHeight +
+          Math.random() * Math.max(0, maxY - headerHeight);
+
+        paw.style.left = x + "px";
+        paw.style.top = y + "px";
+
+        pawContainer.appendChild(paw);
+      }
+
+      const ro = new ResizeObserver(() => {
+        const newH = Math.max(
+          document.body.scrollHeight,
+          document.documentElement.scrollHeight
+        );
+        pawContainer.style.height = newH + "px";
+      });
+      ro.observe(document.documentElement);
+    </script>
   </body>
 </html>
