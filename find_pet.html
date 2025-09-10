@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Happy Tails — Знайти друга</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      main {
+        padding: 20px;
+        max-width: 1000px;
+        margin: auto;
+      }
+      h1 {
+        font-family: "Rubik Mono One", monospace;
+        font-size: 28px;
+      }
+      p {
+        font-family: "Coda", system-ui;
+        font-size: 18px;
+      }
+
+      .filters {
+        margin: 20px 0;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .filters select {
+        padding: 8px;
+        border-radius: 8px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+      }
+      .card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+      }
+      .card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
+      .card .body {
+        padding: 12px;
+      }
+      .card h3 {
+        margin: 0 0 6px;
+        font-family: "Rubik Mono One", monospace;
+        font-size: 20px;
+      }
+      .card p {
+        margin: 0;
+        font-size: 14px;
+        color: #444;
+      }
+      .btn {
+        margin-top: 8px;
+        padding: 6px 10px;
+        border: none;
+        border-radius: 8px;
+        background: #a9e4af;
+        cursor: pointer;
+        font-family: "Rubik Mono One", monospace;
+        font-size: 14px;
+      }
+
+      /* Модальне вікно */
+      .modal-back {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        display: none;
+        align-items: center;
+        justify-content: center;
+      }
+      .modal {
+        background: #fff;
+        border-radius: 12px;
+        padding: 16px;
+        max-width: 400px;
+        width: 90%;
+      }
+      .modal h3 {
+        margin-top: 0;
+      }
+      .close {
+        float: right;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img class="logo" src="logo.png" alt="logo" />
+      <nav>
+        <a class="menu_elements" href="find_pet.html">знайти друга</a>
+        <a class="menu_elements" href="main.html">Про нас</a>
+        <a class="menu_elements" href="Help.html">Як допомогти</a>
+        <a class="menu_elements" href="Contacts.html">Контакти</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Знайти друга</h1>
+      <p>
+        Обери тип тварини та місто, щоб переглянути доступних
+        улюбленців.
+      </p>
+
+      <div class="filters">
+        <select id="type">
+          <option value="">Усі тварини</option>
+          <option value="cat">Кішки</option>
+          <option value="dog">Собаки</option>
+        </select>
+        <select id="city">
+          <option value="">Усі міста</option>
+          <option>Київ</option>
+          <option>Львів</option>
+          <option>Одеса</option>
+        </select>
+        <button class="btn" onclick="apply()">Пошук</button>
+      </div>
+
+      <div id="grid" class="grid"></div>
+    </main>
+
+    <!-- Модалка -->
+    <div id="modalBack" class="modal-back">
+      <div class="modal">
+        <span class="close" onclick="hideModal()">✕</span>
+        <h3 id="mName"></h3>
+        <p id="mDesc"></p>
+      </div>
+    </div>
+
+    <script>
+      const PETS = [
+        {
+          name: "Луна",
+          type: "cat",
+          city: "Київ",
+          img: "https://www.purina.ua/sites/default/files/styles/ttt_image_510/public/2024-01/sitesdefaultfilesstylessquare_medium_440x440public2022-06British-Shorthair.jpg?itok=ToeGdG8b",
+          desc: "Лагідна кішечка, 2 роки.",
+        },
+        {
+          name: "Бруно",
+          type: "dog",
+          city: "Львів",
+          img: "https://img.belta.by/images/storage/news/with_archive/2021/000029_1631708765_459951_big.jpg",
+          desc: "Активний песик, 3 роки.",
+        },
+        {
+          name: "Мур",
+          type: "cat",
+          city: "Одеса",
+          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT5aQxvTnjob-J9ak9Fhx1_shpxzNWhZA4lA&s",
+          desc: "Спокійний котик, 4 роки.",
+        },
+        {
+          name: "Грета",
+          type: "dog",
+          city: "Харків",
+          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScSCl8DDXMVHj5ObnWQ9WN8Io-usbxO1cCOQ&s",
+          desc: "Спокійна доросла собачка, 7 років.",
+        },
+        {
+          name: "Тоша",
+          type: "cat",
+          city: "Київ",
+          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWta4l0xAzSj4-NUgyzaWnk_NacDBVW4FOtw&s",
+          desc: "Молоденький котик, любить гратися, 1 рік.",
+        },
+        {
+          name: "Айра",
+          type: "dog",
+          city: "Одеса",
+          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfiqwgteHt994Vubz8OTInnVCQQv0QszIhcg&s",
+          desc: "Активна вівчарка, 4 роки, добре ладнає з дітьми.",
+        },
+        {
+          name: "Сніжок",
+          type: "cat",
+          city: "Львів",
+          img: "https://ireland.apollo.olxcdn.com/v1/files/z73fmh1smsbb1-UA/image;s=2083x1562",
+          desc: "Пухнастий сибірський кіт, 5 років.",
+        },
+        {
+          name: "Рекс",
+          type: "dog",
+          city: "Київ",
+          img: "https://sobakovod.club/uploads/posts/2021-12/1640333115_10-sobakovod-club-p-sobaki-reks-sobaka-poroda-10.jpg",
+          desc: "Веселий і відданий пес, шукає господаря, 2 роки.",
+        },
+      ];
+
+      const grid = document.getElementById("grid");
+      const modalBack = document.getElementById("modalBack");
+      const mName = document.getElementById("mName");
+      const mDesc = document.getElementById("mDesc");
+
+      function render(list) {
+        grid.innerHTML = "";
+        list.forEach((p) => {
+          const el = document.createElement("div");
+          el.className = "card";
+          el.innerHTML = `
+          <img src="${p.img}" alt="${p.name}" onerror="this.src='dog.png'">
+          <div class="body">
+            <h3>${p.name}</h3>
+            <p>${p.city}</p>
+            <button class="btn">Деталі</button>
+          </div>
+        `;
+          el.querySelector(".btn").onclick = () => openModal(p);
+          grid.appendChild(el);
+        });
+      }
+
+      function apply() {
+        const type = document.getElementById("type").value;
+        const city = document.getElementById("city").value;
+        const list = PETS.filter((p) => {
+          if (type && p.type !== type) return false;
+          if (city && p.city !== city) return false;
+          return true;
+        });
+        render(list);
+      }
+
+      function openModal(p) {
+        mName.textContent = p.name;
+        mDesc.textContent = p.desc;
+        modalBack.style.display = "flex";
+      }
+      function hideModal() {
+        modalBack.style.display = "none";
+      }
+
+      render(PETS);
+    </script>
+  </body>
+</html>

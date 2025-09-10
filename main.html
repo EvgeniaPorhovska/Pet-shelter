@@ -13,9 +13,7 @@
     <header>
       <img class="logo" src="logo.png" alt="logo.png" />
       <nav>
-        <a class="menu_elements" href="findfriend.html"
-          >знайти друга</a
-        >
+        <a class="menu_elements" href="find_pet.html">знайти друга</a>
         <a class="menu_elements" href="main.html">Про нас</a>
         <a class="menu_elements" href="Help.html">Як допомогти</a>
         <a class="menu_elements" href="Contacts.html">Контакти</a>
@@ -87,7 +85,7 @@
       pawContainer.style.position = "absolute";
       pawContainer.style.inset = "0 0 0 0"; // top/right/bottom/left:0
       pawContainer.style.height = docHeight + "px";
-      pawContainer.style.pointerEvents = "none"; 
+      pawContainer.style.pointerEvents = "none";
       pawContainer.style.zIndex = "1";
       document.body.appendChild(pawContainer);
 
@@ -102,8 +100,7 @@
         paw.alt = "";
         paw.style.position = "absolute";
 
-
-        const size = 28 + Math.random() * 64; 
+        const size = 28 + Math.random() * 64;
         paw.style.width = size + "px";
         paw.style.height = "auto";
         paw.style.opacity = (0.45 + Math.random() * 0.4).toFixed(2);
