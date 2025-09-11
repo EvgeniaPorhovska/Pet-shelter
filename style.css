@@ -1,141 +1,135 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Coda:wght@400;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Coda:wght@400;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap");
 
-
-body{
-    background: #FFFBEC;
-    margin: 0;
+body {
+  background: #fffbec;
+  margin: 0;
 }
 
-header{ 
-    background-color: #E6F1FF;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
+header {
+  background-color: #e6f1ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
 }
 
-nav{
-    display: flex;
-    justify-content: space-around;
-    width: 1000px;
+nav {
+  display: flex;
+  justify-content: space-around;
+  width: 1000px;
 }
 
-.logo{
-    width: 130px;
-    height: 110px;
+.logo {
+  width: 130px;
+  height: 110px;
 
-    background: url(happy_tails_transparent.png);
+  background: url(happy_tails_transparent.png);
 }
 
+.menu_elements {
+  font-family: "Rubik Mono One", monospace;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 20px;
+  line-height: 49px;
+  text-decoration-line: underline;
 
-.menu_elements{
-    font-family: "Rubik Mono One", monospace;
-    font-style: normal;
-    font-weight: 200;
-    font-size: 20px;
-    line-height: 49px;
-    text-decoration-line: underline;
-
-    color: #000000;
+  color: #000000;
 }
 
-main{
-    padding: 7px;
+main {
+  padding: 7px;
 }
-.about_us{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    margin-bottom: 30px;
-    position: relative;
-}
-
-.WhoAreWe{
-    font-family: "Rubik Mono One", monospace;
-    font-style: normal;
-    font-weight:  150;
-    font-size: 30px;
-
-
-    color: #000000;
+.about_us {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  position: relative;
 }
 
-.information{
-    font-family: "Coda", system-ui;
-    font-weight: 100;
-    font-size: 25px
+.WhoAreWe {
+  font-family: "Rubik Mono One", monospace;
+  font-style: normal;
+  font-weight: 150;
+  font-size: 30px;
+  color: #000000;
 }
 
-.dog{
-    width: 500px;
-    height: 500px;
-    
+.information {
+  font-family: "Coda", system-ui;
+  font-weight: 100;
+  font-size: 25px;
+}
+
+.dog {
+  width: 500px;
+  height: 500px;
 }
 
 .pets_container {
   display: grid;
-  grid-template-areas: 
+  grid-template-areas:
     "left ."
-    ". right";   /* сітка: ліво-верх і право-низ */
-  background: #ECFFEE;
+    ". right"; /* сітка: ліво-верх і право-низ */
+  background: #ecffee;
   padding: 20px;
 }
 
-.left_photo{
-    grid-area: left;   /* перше фото у верхньому лівому кутку */
-    align-self: start;
-    justify-self: start;
-    height: 500px;
-    width: 380px; 
-    border-radius: 50px;
+.left_photo {
+  grid-area: left; /* перше фото у верхньому лівому кутку */
+  align-self: start;
+  justify-self: start;
+  height: 500px;
+  width: 380px;
+  border-radius: 50px;
 }
 
-.right_photo{
-    grid-area: right;  /* друге фото у нижньому правому кутку */
-    align-self: end;
-    justify-self: end;
-    height: 500px;
-    width: 380px; 
-    border-radius: 50px;
+.right_photo {
+  grid-area: right; /* друге фото у нижньому правому кутку */
+  align-self: end;
+  justify-self: end;
+  height: 500px;
+  width: 380px;
+  border-radius: 50px;
 }
 
-
-.volonteer{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    margin-bottom: 30px;
+.volonteer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
-    
+
 .container {
-  display: flex;           /* розміщує елементи в ряд */
-  gap: 20px;               /* відстань між квадратиками */
+  display: flex; /* розміщує елементи в ряд */
+  gap: 20px; /* відстань між квадратиками */
   justify-content: center; /* центрування */
   padding: 40px;
 }
 
 .card {
-  background: white;       /* білі квадратики */
+  background: white; /* білі квадратики */
   padding: 20px;
-  border-radius: 10px;     /* заокруглені кути */
-  width: 250px;            /* ширина картки */
+  border-radius: 10px; /* заокруглені кути */
+  width: 250px; /* ширина картки */
 }
 
-.helptx{
-    font-family: "Rubik Mono One", monospace;
+.helptx {
+  font-family: "Rubik Mono One", monospace;
 }
 
-.helptx2{
-    font-family: "Coda", system-ui;
+.helptx2 {
+  font-family: "Coda", system-ui;
 }
 
-.lapa1{
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    bottom: 0;
-    right: 0;
+.lapa1 {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  bottom: 0;
+  right: 0;
 }
